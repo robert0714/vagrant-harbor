@@ -48,3 +48,14 @@ There is still a bug here, though. The docs say to install the CA cert in /etc/d
 Usage Introduction
 ====
 https://github.com/vmware/harbor/blob/master/docs/user_guide.md
+
+extfile.cnf
+===
+basicConstraints=CA:FALSE
+nsCertType                      = client, server, email
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage = serverAuth, clientAuth, codeSigning, emailProtection
+nsComment                       = "OpenSSL Generated Certificate"
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid,issuer
+subjectAltName = IP:192.168.57.48
