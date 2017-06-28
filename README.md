@@ -13,3 +13,34 @@ https://github.com/vmware/harbor/blob/master/docs/configure_https.md
 https://github.com/vmware/harbor/blob/master/docs/installation_guide.md
 
 
+<br/>
+Thank you, that also worked for me. Equivalent steps on Ubuntu/Debian:
+
+Copy CA cert to /usr/local/share/ca-certificates.
+
+sudo update-ca-certificates
+
+sudo service docker restart
+
+
+There is still a bug here, though. The docs say to install the CA cert in /etc/docker/certs.d/<registry>, and clearly that isn't sufficient. In fact, after installing the certificate globally, I removed the one in /etc/docker/certs.d, restarted Docker, and it still worked.
+
+<br>
+
+ openssl req     -newkey rsa:4096 -nodes -sha256 -keyout ca.key  \
+    -x509 -days 365 -out ca.crt     -reqexts SAN   \
+      -config <(cat /etc/ssl/openssl.cnf \
+   <(printf "\n[SAN]\nsubjectAltName=DNS:example.com,DNS:www.example.com,IP:192.168.57.48")) 
+
+
+
+ openssl req \
+    -newkey rsa:4096 -nodes -sha256 -keyout 192.168.57.48.key \
+    -out 192.168.57.48.csr
+
+
+    echo subjectAltName = IP:192.168.57.48 > extfile.cnf
+
+    openssl x509 -req -days 365 -in yourdomain.com.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out yourdomain.com.crt
+
+    openssl x509 -req -days 365 -in 192.168.57.48.csr -CA ca.crt -CAkey ca.key -CAcreateserial -extfile extfile.cnf -out 192.168.57.48.crt
