@@ -1,0 +1,18 @@
+hosts: [
+  { host_ip: "192.168.57.70", host_name: "vip-devops"},
+  { host_ip: "192.168.57.71", host_name: "vip-eip"},
+  { host_ip: "192.168.57.72", host_name: "vip-ies-o"},
+  { host_ip: "192.168.57.73", host_name: "vip-ies-m"},
+  { host_ip: "192.168.57.74", host_name: "vip-ies-i"},
+  { host_ip: "192.168.57.75", host_name: "vip-npp"},
+  { host_ip: "192.168.57.76", host_name: "vip-sso-ipki"} ,
+  { host_ip: "192.168.57.77", host_name: "vip-sonarqube"} 
+]
+
+obsolete_services:
+  - puppet
+  - chef-client
+
+centos_files: [
+     { src: "centos.sshd_config", dest: "/etc/ssh/sshd_config" },
+  ]
