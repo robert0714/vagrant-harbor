@@ -48,6 +48,7 @@ There is still a bug here, though. The docs say to install the CA cert in /etc/d
 Usage Introduction
 ====
 https://github.com/vmware/harbor/blob/master/docs/user_guide.md
+可以參考https://wiki.centos.org/zh-tw/HowTos/Https
 
 extfile.cnf
 ===
