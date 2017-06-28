@@ -59,3 +59,26 @@ nsComment                       = "OpenSSL Generated Certificate"<br/>
 subjectKeyIdentifier=hash<br/>
 authorityKeyIdentifier=keyid,issuer<br/>
 subjectAltName = IP:192.168.57.48<br/>
+
+step1
+<br/>
+```
+  openssl req \
+    -newkey rsa:4096 -nodes -sha256 -keyout ca.key \
+    -x509 -days 3650 -out ca.crt
+```
+
+step2
+<br/>
+```
+  $ openssl req     -newkey rsa:4096 -nodes -sha256 -keyout 10.100.98.20.key  \
+  -out  10.100.98.20.csr
+
+```
+step3
+<br/>
+```
+$ openssl x509 -req -days 3650 -in 10.100.98.20.csr \
+-CA ca.crt -CAkey ca.key -CAcreateserial -extfile extfile.cnf -out 10.100.98.20.crt
+
+```
