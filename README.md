@@ -51,14 +51,16 @@ https://github.com/vmware/harbor/blob/master/docs/user_guide.md
 
 extfile.cnf
 ===
+```
 basicConstraints=CA:FALSE
-nsCertType                      = client, server, email<br/>
-keyUsage = nonRepudiation, digitalSignature, keyEncipherment<br/>
-extendedKeyUsage = serverAuth, clientAuth, codeSigning, emailProtection<br/>
-nsComment                       = "OpenSSL Generated Certificate"<br/>
-subjectKeyIdentifier=hash<br/>
-authorityKeyIdentifier=keyid,issuer<br/>
-subjectAltName = IP:192.168.57.48<br/>
+nsCertType  = client, server, email
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage = serverAuth, clientAuth, codeSigning, emailProtection
+nsComment                       = "OpenSSL Generated Certificate"
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid,issuer
+subjectAltName = IP:192.168.57.48,IP:10.100.98.20
+```
 
 step1
 <br/>
