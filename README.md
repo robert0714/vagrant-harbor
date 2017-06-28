@@ -44,3 +44,7 @@ There is still a bug here, though. The docs say to install the CA cert in /etc/d
     openssl x509 -req -days 365 -in yourdomain.com.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out yourdomain.com.crt
 
     openssl x509 -req -days 365 -in 192.168.57.48.csr -CA ca.crt -CAkey ca.key -CAcreateserial -extfile extfile.cnf -out 192.168.57.48.crt
+
+Usage Introduction
+====
+https://github.com/vmware/harbor/blob/master/docs/user_guide.md
